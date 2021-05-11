@@ -4,7 +4,7 @@
 
 set -e
 
-source config
+source install_config
 
 ### Check installed tools ###
 {
@@ -121,6 +121,8 @@ else
   echo "pull:" >> Makefile
   echo "	docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull" >> Makefile
 fi
+
+cp install_config $TARGET_DIR/config/
 
 echo '
  --- INSTALLATION SUCCESSFUL ---
