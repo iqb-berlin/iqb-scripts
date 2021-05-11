@@ -122,7 +122,7 @@ else
   echo "	docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull" >> Makefile
 fi
 
-cp install_config $TARGET_DIR/config/
+cp ../install_config $TARGET_DIR/config/
 
 echo '
  --- INSTALLATION SUCCESSFUL ---
