@@ -76,7 +76,6 @@ cd $TARGET_DIR
 ### Set up config ###
 read  -p '2. Server Address (hostname (without subdomains) or IP): ' -e -i $(hostname) HOSTNAME
 sed -i "s/localhost/$HOSTNAME/" .env
-echo "HOSTNAME=$HOSTNAME" >> .env
 
 echo '3. Other Settings'
 echo ' Please carefully specify the parameters for database access. Accepting
