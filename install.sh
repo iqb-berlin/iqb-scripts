@@ -84,8 +84,8 @@ echo ' Please carefully specify the parameters for database access. Accepting
  Use the defaults only for tryout installations, never in production use cases!'
 for var in "${!env_vars[@]}"
   do
-    read  -p "$var: " -e -i ${env_vars[$var]} $var
-    echo "$var=${env_vars[$var]}" >> .env
+    read  -p "$var: " -e -i ${env_vars[$var]} new_var
+    sed -i "s#$var.*#$var=$new_var#" .env
 done
 
 read  -p 'Use TLS? [y/N]: ' -r -n 1 -e TLS
