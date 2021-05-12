@@ -70,7 +70,7 @@ echo 'Ready to install. Please input some parameters for customization:'
 read  -p '1. Install directory: ' -e -i "`pwd`/$APP_NAME" TARGET_DIR
 ### Unpack application ###
 mkdir -p $TARGET_DIR
-tar -xf *.tar -C $TARGET_DIR
+tar -xf $APP_NAME*.tar -C $TARGET_DIR
 cd $TARGET_DIR
 
 ### Set up config ###
