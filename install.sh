@@ -88,7 +88,7 @@ for var in "${!env_vars[@]}"
     echo "$var=${env_vars[$var]}" >> .env
 done
 
-read  -p 'Use TLS? (y/N): ' -r -n 1 -e TLS
+read  -p 'Use TLS? [y/N]: ' -r -n 1 -e TLS
 if [[ $TLS =~ ^[yY]$ ]]
 then
   echo "The certificates need to be placed in config/certs and their name configured in config/cert_config.yml."
