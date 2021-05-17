@@ -31,6 +31,8 @@ TAG=`curl -s $REPO_URL/releases/latest \
 | tr -d , \
 | tr -d ' '`
 
+ANY_NEW_VERSION=false
+
 declare -A new_versions
 for component in ${!components[@]}
 do
