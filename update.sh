@@ -8,6 +8,7 @@ compare_version_string() {
   test $(echo $1 | cut -d '.' -f 2) -eq $(echo $2 | cut -d '.' -f 2)
   second_number_equals=$?
 
+  NEWER_VERSION=false
   if [ $(echo $1 | cut -d '.' -f 1) -gt $(echo $2 | cut -d '.' -f 1) ]
     then
       NEWER_VERSION=true
@@ -20,6 +21,7 @@ compare_version_string() {
     then
       NEWER_VERSION=true
   fi
+  echo "$NEWER_VERSION"
 }
 
 TAG=`curl -s $REPO_URL/releases/latest \
@@ -36,16 +38,15 @@ do
   NEW_VERSION=`echo "$TAG" | grep -oP ${components[$component]}`
   echo "$component: $OLD_VERSION -> $NEW_VERSION"
 
-  NEWER_VERSION=false
-  compare_version_string $NEW_VERSION $OLD_VERSION
+  NEWER_VERSION=$(compare_version_string $NEW_VERSION $OLD_VERSION)
   if [ $NEWER_VERSION = 'true' ]
     then
-      NEWER_VERSION=true
+      ANY_NEW_VERSION=true
       new_versions[$component]=$NEW_VERSION
   fi
 done
 
-if [ $NEWER_VERSION = 'true' ]
+if [ $ANY_NEW_VERSION = 'true' ]
   then
     read -p "Newer version found. Do you want to update to the latest release? [Y/n]:" -r -n 1 -e UPDATE
     if [[ $UPDATE =~ ^[nN]$ ]]
