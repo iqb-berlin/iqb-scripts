@@ -28,9 +28,10 @@ import sys
 import re
 import subprocess
 
-from config.new_version_config import VERSION_FILE
-from config.new_version_config import VERSION_REGEX
-from config.new_version_config import ADDITIONAL_FILES_TO_COMMIT
+import new_version_config
+VERSION_FILE = new_version_config.VERSION_FILE
+VERSION_REGEX = new_version_config.VERSION_REGEX
+ADDITIONAL_FILES_TO_COMMIT = new_version_config.ADDITIONAL_FILES_TO_COMMIT
 
 
 def check_git_status():
