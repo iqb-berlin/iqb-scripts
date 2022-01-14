@@ -80,7 +80,8 @@ sed -i "s/localhost/$HOSTNAME/" .env
 echo '3. Other Settings'
 echo ' Please carefully specify the parameters for database access. Accepting
  the defaults will put your installation at risk.
- Use the defaults only for tryout installations, never in production use cases!'
+ Use the defaults only for tryout installations, never in production use cases!
+ For passwords you must not use quote characters!'
 for var in "${!env_vars[@]}"
   do
     read  -p "$var: " -e -i ${env_vars[$var]} new_var
